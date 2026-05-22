@@ -1,0 +1,33 @@
+@startuml
+class Mission {
+  - missionId: String
+  - date: String
+  - location: String
+  - outcome: String
+  - damageCost: long
+  - comment: String
+  - extraFields: Map<String, String>
+}
+
+class Curse {
+  - name: String
+  - threatLevel: String
+}
+
+class Sorcerer {
+  - name: String
+  - rank: String
+}
+
+class Technique {
+  - name: String
+  - type: String
+  - owner: String
+  - damage: long
+}
+
+Mission "1" *-- "1" Curse
+Mission "1" *-- "0..*" Sorcerer
+Mission "1" *-- "0..*" Technique
+Technique ..> Sorcerer : owner by name
+@enduml
